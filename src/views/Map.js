@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
   root: {
     height: '100vh',
     overflow: 'hidden',
+    position: 'relative',
   },
   fab: { top: '0', left: '0', margin: '2%' },
   grow: {
@@ -23,16 +24,14 @@ export default function Map() {
   const classes = useStyles();
 
   return (
-    <>
-      <Grid container direction="column" className={classes.root} wrap="nowrap">
-        <Grid item className={clsx(classes.content, classes.grow)}>
-          <Grid container>main</Grid>
-        </Grid>
-        <Grid item container wrap="nowrap" component={Paper}>
-          <InputBase className={classes.grow} />
-        </Grid>
+    <Grid container direction="column" className={classes.root} wrap="nowrap">
+      <Grid item className={clsx(classes.content, classes.grow)}>
+        <Grid container>main</Grid>
+      </Grid>
+      <Grid item container wrap="nowrap" component={Paper}>
+        <InputBase className={classes.grow} />
       </Grid>
       <Fab>hi</Fab>
-    </>
+    </Grid>
   );
 }
