@@ -36,22 +36,73 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const msToSeconds = (ms) => (Math.round(ms) / 1000).toFixed(2);
+
+function randomChar() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const charactersLength = characters.length;
+  return characters.charAt(Math.floor(Math.random() * charactersLength));
+}
+
+const getGameStateWithRandomChar = (round) => {
+  const char = randomChar();
+  return {
+    round,
+    char,
+  };
+};
 export default function Map() {
   const classes = useStyles();
   const [time, setTime] = useState(0);
-  const [gameState, setGameState] = useState(0);
+  const [gameState, setGameState] = useState(() =>
+    getGameStateWithRandomChar(1),
+  );
   const timerRef = useRef(null);
+  const gameStatus = useRef(false);
 
   const onGameStart = () => {
-    timerRef.current = setInterval(() => {}, 10);
+    gameStatus.current = true;
+    timerRef.current = setInterval(() => {
+      setTime((t) => t + 10);
+    }, 10);
   };
 
-  useEffect(
-    () => () => timerRef.current && clearInterval(timerRef.curretn),
-    [],
-  );
+  const onGameStop = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = null;
+    gameStatus.current = false;
+  };
 
-  const onKeyPress = () => {};
+  const onKeyPress = (e) => {
+    if (gameState.round <= 20) {
+      if (gameState.round === 1 && gameStatus.current === false) {
+        gameStatus.current = true;
+        onGameStart();
+      }
+      if (gameState.round < 20) {
+        if (e.key?.toUpperCase() === gameState.char.toUpperCase()) {
+          setGameState((gs) => getGameStateWithRandomChar(gs.round + 1));
+        } else {
+          setTime((t) => t + 500);
+        }
+      }
+      //  win or loose
+      else if (e.key?.toUpperCase() === gameState.char.toUpperCase()) {
+        setGameState({ round: 0, char: 'Sucess' });
+        onGameStop();
+      } else {
+        setTime((t) => t + 500);
+      }
+    }
+  };
+
+  const onGameReset = () => {
+    onGameStop();
+    setGameState(getGameStateWithRandomChar(1));
+    setTime(0);
+  };
+
+  useEffect(() => () => onGameStop(), []);
 
   return (
     <Grid container direction="column" className={classes.root} wrap="nowrap">
@@ -78,14 +129,14 @@ export default function Map() {
             sx={{ my: 2, py: '10%' }}
           >
             <Typography variant="h1" className={classes.mainText}>
-              SUCESS
+              {gameState.char}
             </Typography>
           </Grid>
           <Typography variant="h5" gutterBottom>
-            Time: 0
+            Time: {msToSeconds(time)}s
           </Typography>
           <Typography variant="h5" gutterBottom>
-            my best time: 1.34s
+            my best time: {1.34}s
           </Typography>
         </Grid>
       </Grid>
@@ -98,7 +149,7 @@ export default function Map() {
       >
         <InputBase
           autoFocus
-          autoCapitalize
+          onKeyPress={onKeyPress}
           className={classes.grow}
           inputProps={{ style: { textTransform: 'uppercase' } }}
           sx={{ pl: 1.4, px: 2, color: '#000' }}
@@ -107,6 +158,7 @@ export default function Map() {
           disableElevation
           disableFocusRipple
           disableRipple
+          onClick={onGameReset}
           variant="contained"
           sx={{ borderRadius: 0, textTransform: 'none' }}
         >

@@ -8,15 +8,15 @@ export default {
   white,
   primary: {
     contrastText: white,
-    dark: white,
-    light: white,
+    dark: '#F14050',
+    light: '#F14050',
 
     main: '#F1406C',
   },
   secondary: {
     contrastText: white,
     dark: colors.blue[900],
-    main: '#ebf2ff',
+    main: '#F1406C',
     light: colors.blue.A400,
   },
   error: {
@@ -27,7 +27,7 @@ export default {
   },
   text: {
     primary: white,
-    secondary: white,
+    secondary: black,
     link: colors.blue[600],
   },
   link: colors.blue[800],

@@ -7,7 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import Map from '@views/Map';
+import Game from '@views/Game';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/map" component={Map} />
-          <Redirect to="/map" />
+          <Route exact path="/game" component={Game} />
+          <Redirect to="/game" />
         </Switch>
       </Router>
     </>
