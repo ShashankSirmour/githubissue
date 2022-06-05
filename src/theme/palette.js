@@ -8,9 +8,8 @@ export default {
   white,
   primary: {
     contrastText: white,
-    dark: colors.indigo[900],
-
-    light: colors.indigo[100],
+    dark: white,
+    light: white,
 
     main: '#F1406C',
   },
@@ -27,8 +26,8 @@ export default {
     light: colors.red[400],
   },
   text: {
-    primary: colors.blueGrey[900],
-    secondary: colors.blueGrey[600],
+    primary: white,
+    secondary: white,
     link: colors.blue[600],
   },
   link: colors.blue[800],
