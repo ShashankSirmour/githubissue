@@ -12,7 +12,7 @@ export default {
 
     light: colors.indigo[100],
 
-    main: '#752fff',
+    main: '#F1406C',
   },
   secondary: {
     contrastText: white,
@@ -34,8 +34,8 @@ export default {
   link: colors.blue[800],
   icon: colors.blueGrey[600],
   background: {
-    default: '#F4F6F8',
-    paper: white,
+    default: '#F9F1E7',
+    paper: '#F9F2E7',
   },
   divider: colors.grey[200],
 };

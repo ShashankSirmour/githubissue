@@ -3,20 +3,24 @@ import makeStyles from '@mui/styles/makeStyles';
 import Paper from '@mui/material/Paper';
 import { InputBase } from '@mui/material';
 import clsx from 'clsx';
-import Fab from '@mui/material/Fab';
+import Button from '@mui/material/Button';
 
 const useStyles = makeStyles(() => ({
   root: {
     height: '100vh',
     overflow: 'hidden',
     position: 'relative',
+    backgroundColor: '#0A1953',
   },
   fab: { top: '0', left: '0', margin: '2%' },
   grow: {
     flexGrow: 1,
   },
-  content: {
-    overflowY: 'scroll',
+  mainRoot: {
+    overflowY: 'auto',
+  },
+  mainArea: {
+    height: '200vh',
   },
 }));
 
@@ -25,13 +29,29 @@ export default function Map() {
 
   return (
     <Grid container direction="column" className={classes.root} wrap="nowrap">
-      <Grid item className={clsx(classes.content, classes.grow)}>
-        <Grid container>main</Grid>
+      <Grid item className={clsx(classes.mainRoot, classes.grow)}>
+        <Grid container className={classes.mainArea}>
+          main
+        </Grid>
       </Grid>
-      <Grid item container wrap="nowrap" component={Paper}>
-        <InputBase className={classes.grow} />
+      <Grid
+        item
+        container
+        wrap="nowrap"
+        component={Paper}
+        sx={{ borderRadius: 0 }}
+      >
+        <InputBase className={classes.grow} sx={{ pl: 1.4, px: 2 }} />
+        <Button
+          disableElevation
+          disableFocusRipple
+          disableRipple
+          variant="contained"
+          sx={{ borderRadius: 0, textTransform: 'none' }}
+        >
+          Reset
+        </Button>
       </Grid>
-      <Fab>hi</Fab>
     </Grid>
   );
 }
