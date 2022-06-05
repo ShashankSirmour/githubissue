@@ -21,6 +21,12 @@ const useStyles = makeStyles(() => ({
   },
   mainArea: {
     height: '100%',
+    padding: '20px',
+  },
+  charArea: {
+    color: 'green',
+    backgroundColor: '#fff',
+    textTransform: 'uppercase',
   },
 }));
 
@@ -30,8 +36,26 @@ export default function Map() {
   return (
     <Grid container direction="column" className={classes.root} wrap="nowrap">
       <Grid item className={clsx(classes.mainRoot, classes.grow)}>
-        <Grid container className={classes.mainArea}>
-          main
+        <Grid
+          container
+          className={classes.mainArea}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Grid item>rule</Grid>
+          <Grid
+            item
+            container
+            alignItems="center"
+            justifyContent="center"
+            fontSize="5rem"
+            className={classes.charArea}
+            sx={{ my: 2, py: '10%' }}
+          >
+            H
+          </Grid>
+          <Grid item>guide</Grid>
         </Grid>
       </Grid>
       <Grid
