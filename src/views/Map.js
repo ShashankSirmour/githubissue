@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
     overflowY: 'auto',
   },
   mainArea: {
-    height: '200vh',
+    height: '100%',
   },
 }));
 
