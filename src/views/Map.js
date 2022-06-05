@@ -1,107 +1,34 @@
-/* eslint-disable no-useless-escape */
-import React, { useState, useCallback } from 'react';
-import { Fab, Grid } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import makeStyles from '@mui/styles/makeStyles';
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
-import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
-import { MAP_API_KEY } from '@utils/constants';
-import { RouteRender, Controller } from '@components/templates';
+import Paper from '@mui/material/Paper';
+import { InputBase } from '@mui/material';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(() => ({
   root: {
     height: '100vh',
+    overflow: 'hidden',
   },
   fab: { top: '0', left: '0', margin: '2%' },
+  grow: {
+    flexGrow: 1,
+  },
+  content: {
+    overflowY: 'scroll',
+  },
 }));
-
-const getMapOptions = {
-  streetViewControl: false,
-  scaleControl: true,
-  fullscreenControl: false,
-  minZoom: 6,
-  maxZoom: 20,
-  mapTypeControl: false,
-  zoomControl: true,
-  clickableIcons: true,
-};
 
 export default function Map() {
   const classes = useStyles();
 
-  const [expand, setExpand] = useState(true);
-  const [speed, setSpeed] = useState(1);
-  const [pause, setPause] = useState(true);
-
-  const [center, setCenter] = useState({
-    lat: 20.344627,
-    lng: 78.516747,
-  });
-
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: MAP_API_KEY, // ,
-    // ...otherOptions
-  });
-
-  const onClose = useCallback(() => {
-    setExpand(false);
-  }, []);
-
-  const speedChangeHandler = useCallback((event, newSpeed) => {
-    setSpeed(newSpeed);
-  }, []);
-
-  const setPaueHandler = useCallback((state) => {
-    setPause(state);
-  }, []);
-
-  const setCenterPoint = useCallback((point) => {
-    setCenter(point);
-  }, []);
-
-  if (isLoaded) {
-    return (
-      <Grid container component="main" className={classes.root}>
-        <GoogleMap
-          mapContainerStyle={{
-            height: '100%',
-            width: '100%',
-            position: 'relative',
-          }}
-          zoom={14}
-          center={center}
-          options={getMapOptions}
-        >
-          <RouteRender
-            speed={speed}
-            setCenterPoint={setCenterPoint}
-            pause={pause}
-            paueHandler={setPaueHandler}
-          />
-          {expand && (
-            <Controller
-              pause={pause}
-              speed={speed}
-              setPaueHandler={setPaueHandler}
-              onControllerClose={onClose}
-              speedChangeHandler={speedChangeHandler}
-            />
-          )}
-          {!expand && (
-            <Fab
-              className={classes.fab}
-              color="primary"
-              onClick={() => setExpand(true)}
-            >
-              <DisplaySettingsIcon />
-            </Fab>
-          )}
-        </GoogleMap>
+  return (
+    <Grid container direction="column" className={classes.root} wrap="nowrap">
+      <Grid item className={clsx(classes.content, classes.grow)}>
+        <Grid container>main</Grid>
       </Grid>
-    );
-  }
-  if (loadError) {
-    return 'error';
-  }
-
-  return 'loading';
+      <Grid item container wrap="nowrap" component={Paper}>
+        <InputBase className={classes.grow} />
+      </Grid>
+    </Grid>
+  );
 }
