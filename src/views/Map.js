@@ -3,6 +3,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Paper from '@mui/material/Paper';
 import { InputBase } from '@mui/material';
 import clsx from 'clsx';
+import Fab from '@mui/material/Fab';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,13 +23,16 @@ export default function Map() {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column" className={classes.root} wrap="nowrap">
-      <Grid item className={clsx(classes.content, classes.grow)}>
-        <Grid container>main</Grid>
+    <>
+      <Grid container direction="column" className={classes.root} wrap="nowrap">
+        <Grid item className={clsx(classes.content, classes.grow)}>
+          <Grid container>main</Grid>
+        </Grid>
+        <Grid item container wrap="nowrap" component={Paper}>
+          <InputBase className={classes.grow} />
+        </Grid>
       </Grid>
-      <Grid item container wrap="nowrap" component={Paper}>
-        <InputBase className={classes.grow} />
-      </Grid>
-    </Grid>
+      <Fab>hi</Fab>
+    </>
   );
 }
