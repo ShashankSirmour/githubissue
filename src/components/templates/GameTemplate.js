@@ -92,10 +92,7 @@ export default function Game({
         <InputBase
           autoFocus
           className={classes.grow}
-          onChange={(e) =>
-            e.nativeEvent.inputType === 'insertText' &&
-            onKeyPress(e.nativeEvent.data)
-          }
+          onKeyDown={(e) => onKeyPress(e.key)}
           inputProps={{ style: { textTransform: 'uppercase' } }}
           sx={{ pl: 1.4, px: 2, color: '#000' }}
         />

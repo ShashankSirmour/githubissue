@@ -31,7 +31,7 @@ export default function GameContainer() {
   };
 
   const onKeyPress = (key) => {
-    if (gameState.round <= 20) {
+    if (gameState.round <= 20 && gameState.round > 0) {
       if (gameState.round === 1 && gameStatus.current === false) {
         gameStatus.current = true;
         onGameStart();
