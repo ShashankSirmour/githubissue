@@ -45,7 +45,7 @@ export default function GameContainer() {
       }
       //  win or loose
       else if (e.key?.toUpperCase() === gameState.char.toUpperCase()) {
-        if (time < highScore) {
+        if (time < highScore || highScore === 0) {
           setGameState({ round: 0, char: 'Success' });
           dispatch(setHighScore(time));
         } else setGameState({ round: 0, char: 'Failed' });
