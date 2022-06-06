@@ -43,6 +43,7 @@ export default function Game({
   highScore,
   onKeyPress,
   onGameReset,
+  debugText,
 }) {
   const classes = useStyles();
 
@@ -92,7 +93,7 @@ export default function Game({
         <InputBase
           autoFocus
           className={classes.grow}
-          onKeyDown={(e) => onKeyPress(e.key)}
+          onKeyUp={(e) => onKeyPress(e.key)}
           inputProps={{ style: { textTransform: 'uppercase' } }}
           sx={{ pl: 1.4, px: 2, color: '#000' }}
         />
@@ -113,6 +114,7 @@ export default function Game({
 
 Game.defaultProps = {
   mainText: '',
+  debugText: '',
   time: 0,
   highScore: 0,
   onKeyPress: () => {},
@@ -122,6 +124,7 @@ Game.defaultProps = {
 Game.propTypes = {
   mainText: PropTypes.string,
   time: PropTypes.number,
+  debugText: '',
   highScore: PropTypes.number,
   onKeyPress: PropTypes.func,
   onGameReset: PropTypes.func,
