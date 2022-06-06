@@ -19,7 +19,7 @@ const composed = reduxDevTools
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['route'],
+  blacklist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

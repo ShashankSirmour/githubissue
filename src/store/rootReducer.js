@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { routeReducer } from './route';
+import { gameReducer } from './game';
 
 export default combineReducers({
-  route: routeReducer,
+  game: gameReducer,
 });
