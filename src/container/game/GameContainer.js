@@ -30,21 +30,21 @@ export default function GameContainer() {
     gameStatus.current = false;
   };
 
-  const onKeyPress = (e) => {
+  const onKeyPress = (key) => {
     if (gameState.round <= 20) {
       if (gameState.round === 1 && gameStatus.current === false) {
         gameStatus.current = true;
         onGameStart();
       }
       if (gameState.round < 20) {
-        if (e.key?.toUpperCase() === gameState.char.toUpperCase()) {
+        if (key?.toUpperCase() === gameState.char.toUpperCase()) {
           setGameState((gs) => getGameStateWithRandomChar(gs.round + 1));
         } else {
           setTime((t) => t + 500);
         }
       }
       //  win or loose
-      else if (e.key?.toUpperCase() === gameState.char.toUpperCase()) {
+      else if (key?.toUpperCase() === gameState.char.toUpperCase()) {
         if (time < highScore || highScore === 0) {
           setGameState({ round: 0, char: 'Success' });
           dispatch(setHighScore(time));
