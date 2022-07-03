@@ -1,1 +1,1 @@
-export { default as GameTemplate } from './GameTemplate';
+export { default as CurriculumDesignerTemplate } from './CurriculumDesignerTemplate';

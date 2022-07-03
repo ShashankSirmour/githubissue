@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { gameReducer } from './game';
+import { curriculumReducer } from './curriculum';
 
 export default combineReducers({
-  game: gameReducer,
+  curriculum: curriculumReducer,
 });

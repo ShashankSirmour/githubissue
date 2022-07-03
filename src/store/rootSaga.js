@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
-import { gameSaga } from './game';
+import { curriculumSaga } from './curriculum';
 
 export default function* rootSaga() {
-  yield all([gameSaga].map(fork));
+  yield all([curriculumSaga].map(fork));
 }

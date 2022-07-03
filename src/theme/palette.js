@@ -7,16 +7,16 @@ export default {
   black,
   white,
   primary: {
-    contrastText: white,
-    dark: '#F14050',
-    light: '#F14050',
+    contrastText: black,
+    dark: '#337AB7',
+    light: '#337AB7',
 
-    main: '#F1406C',
+    main: '#337AB7',
   },
   secondary: {
-    contrastText: white,
+    contrastText: black,
     dark: colors.blue[900],
-    main: '#F1406C',
+    main: '#21CCD1',
     light: colors.blue.A400,
   },
   error: {
@@ -26,15 +26,16 @@ export default {
     light: colors.red[400],
   },
   text: {
-    primary: white,
-    secondary: black,
+    primary: black,
+    secondary: '#BDBDBD',
     link: colors.blue[600],
   },
   link: colors.blue[800],
   icon: colors.blueGrey[600],
   background: {
-    default: '#F9F1E7',
-    paper: '#F9F2E7',
+    default: '#fff',
+    paper: '#fff',
+    empty: '#f5f5f5',
   },
   divider: colors.grey[200],
 };

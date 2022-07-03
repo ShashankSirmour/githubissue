@@ -1,6 +1,7 @@
 #config files
 jsconfig.jsconfig
 craco.config.js  
+.todo
 
 # Third party
 **/node_modules
