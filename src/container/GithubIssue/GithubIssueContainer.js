@@ -4,14 +4,19 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function GithubIssueContainer() {
-  const { data, loading } = useSelector((state) => state.issue);
+  const { data, loading, end } = useSelector((state) => state.issue);
   const dispatch = useDispatch();
 
   const loadMore = useCallback(() => {
-    if (!loading) dispatch(initIssuesDataRequest());
+    if (!loading && !end) dispatch(initIssuesDataRequest());
   }, [loading]);
 
   return (
-    <GithubIssueTemplate data={data} loading={loading} loadMore={loadMore} />
+    <GithubIssueTemplate
+      data={data}
+      loading={loading}
+      loadMore={loadMore}
+      end={end}
+    />
   );
 }

@@ -19,7 +19,7 @@ const sx = {
   divider: { borderColor: '#D0D7DE' },
 };
 
-function GithubIssueTemplate({ loadMore, data, loading }) {
+function GithubIssueTemplate({ loadMore, data, end }) {
   return (
     <Grid
       container
@@ -56,7 +56,7 @@ function GithubIssueTemplate({ loadMore, data, loading }) {
             <InfiniteScroll
               pageStart={1}
               loadMore={loadMore}
-              hasMore
+              hasMore={!end}
               loader={
                 <div className="loader" key={0}>
                   Loading ...
@@ -85,13 +85,13 @@ function GithubIssueTemplate({ loadMore, data, loading }) {
 
 GithubIssueTemplate.defaultProps = {
   data: [],
-  loading: false,
+  end: false,
   loadMore: () => {},
 };
 
 GithubIssueTemplate.propTypes = {
   data: PropTypes.array,
-  loading: PropTypes.bool,
+  end: PropTypes.bool,
   loadMore: PropTypes.func,
 };
 

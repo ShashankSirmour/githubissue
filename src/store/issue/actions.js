@@ -3,6 +3,7 @@ import {
   SET_ISSUES_DATA_ERROR,
   SET_ISSUES_DATA_SUCCESS,
   SET_ISSUES_DATA_INITIATED,
+  SET_ISSUES_DATA_END,
 } from '../actionTypes';
 
 export const initIssuesDataRequest = () => ({
@@ -21,4 +22,8 @@ export const setIssuesDataSuccess = (user) => ({
 export const setIssuesDataError = (error) => ({
   type: SET_ISSUES_DATA_ERROR,
   payload: error,
+});
+
+export const setEnd = () => ({
+  type: SET_ISSUES_DATA_END,
 });
