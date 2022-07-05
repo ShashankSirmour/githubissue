@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { curriculumReducer } from './curriculum';
+import { issueReducer } from './issue';
 
 export default combineReducers({
-  curriculum: curriculumReducer,
+  issue: issueReducer,
 });

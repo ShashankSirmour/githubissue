@@ -7,14 +7,14 @@ export default {
   black,
   white,
   primary: {
-    contrastText: black,
+    contrastText: '#57606A',
     dark: '#337AB7',
     light: '#337AB7',
 
     main: '#337AB7',
   },
   secondary: {
-    contrastText: black,
+    contrastText: '#57606A',
     dark: colors.blue[900],
     main: '#21CCD1',
     light: colors.blue.A400,
@@ -27,7 +27,7 @@ export default {
   },
   text: {
     primary: black,
-    secondary: '#BDBDBD',
+    secondary: '#57606A',
     link: colors.blue[600],
   },
   link: colors.blue[800],

@@ -7,7 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import CurriculumDesigner from '@views/CurriculumDesigner';
+import GithubIssue from '@views/GithubIssue';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/" component={CurriculumDesigner} />
+          <Route exact path="/" component={GithubIssue} />
           <Redirect to="/" />
         </Switch>
       </Router>

@@ -1,1 +1,1 @@
-export { default as CurriculumDesignerTemplate } from './CurriculumDesignerTemplate';
+export { default as GithubIssueTemplate } from './GithubIssueTemplate';

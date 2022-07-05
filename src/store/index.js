@@ -19,7 +19,7 @@ const composed = reduxDevTools
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['curriculum'],
+  blacklist: ['issue'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

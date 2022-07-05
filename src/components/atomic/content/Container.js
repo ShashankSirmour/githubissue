@@ -8,8 +8,7 @@ function Container({ children, ...rest }) {
       maxWidth={{ sm: 720, md: 1236 }}
       width={1}
       margin="0 auto"
-      paddingX={{ xs: 2, sm: 6, md: 16 }}
-      paddingTop={{ xs: 4, sm: 6, md: 8 }}
+      paddingX={{ xs: 0, sm: 2, md: 10 }}
       {...rest}
     >
       {children}
