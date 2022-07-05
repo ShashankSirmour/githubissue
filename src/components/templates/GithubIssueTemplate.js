@@ -52,7 +52,7 @@ function GithubIssueTemplate({ loadMore, data, end }) {
               <DropButton title="Projects" />
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item maxWidth="100vw">
             <InfiniteScroll
               pageStart={1}
               loadMore={loadMore}
