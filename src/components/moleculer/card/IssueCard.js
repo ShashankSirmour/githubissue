@@ -1,9 +1,18 @@
-import { Box, Chip, Grid, Typography, useMediaQuery } from '@mui/material';
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Chip,
+  Grid,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import React from 'react';
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
 import { useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import AltRouteOutlinedIcon from '@mui/icons-material/AltRouteOutlined';
 
 function timeSince(date) {
   const seconds = Math.floor((new Date() - date) / 1000);
@@ -46,6 +55,16 @@ const sx = {
   commentIcon: {
     color: '#57606A',
     marginRight: 0.2,
+    fontSize: 18,
+  },
+  avatar: {},
+  avatarGroup: {
+    '& .MuiAvatar-root': {
+      width: 18,
+      height: 18,
+      fontSize: 12,
+      marginLeft: -0.75,
+    },
   },
 };
 export default function IssueCard({ data }) {
@@ -85,8 +104,22 @@ export default function IssueCard({ data }) {
         </Grid>
       </Grid>
       {isSmUp && (
-        <Grid item sm={3} container justifyContent="flex-end">
-          {data.comments > 0 && (
+        <Grid item sm={3} container justifyContent="space-between">
+          <Grid item />
+          {data?.assignees?.length > 0 && (
+            <AvatarGroup max={4} sx={sx.avatarGroup}>
+              {data.assignees.map((a) => (
+                <Avatar sx={sx.avatar} alt={a.login} src={a.avatar_url} />
+              ))}
+            </AvatarGroup>
+          )}
+          {data.pull_request && (
+            <Box alignItems="start" display="flex">
+              <AltRouteOutlinedIcon fontSize="small" sx={sx.commentIcon} />
+              <div>{1}</div>
+            </Box>
+          )}
+          {data?.comments > 0 && (
             <Box alignItems="start" display="flex">
               <ModeCommentOutlinedIcon fontSize="small" sx={sx.commentIcon} />
               <div>{data.comments}</div>

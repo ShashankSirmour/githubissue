@@ -1,4 +1,4 @@
-import { Container } from '@components/atomic';
+import { Container, DropButton } from '@components/atomic';
 import { GithubFooter, GithubHeader, IssueCard } from '@components/moleculer';
 import { Box, Divider, Grid, Typography } from '@mui/material';
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
@@ -32,11 +32,25 @@ function GithubIssueTemplate({ loadMore, data, loading }) {
       </Grid>
       <Container sx={sx.root} marginTop={5} marginBottom={5}>
         <Grid container direction="column" sx={sx.container} borderRadius={1}>
-          <Grid item container px={2} py={3} sx={sx.childHeader}>
-            <AdjustOutlinedIcon fontSize="small" />
-            <Typography fontWeight="500" ml={1}>
-              625 Open
-            </Typography>
+          <Grid
+            item
+            container
+            px={2}
+            py={3}
+            sx={sx.childHeader}
+            alignItems="center"
+            justifyContent="space-between"
+            wrap="nowrap"
+          >
+            <Grid item container wrap="nowrap" width="auto">
+              <AdjustOutlinedIcon fontSize="small" sx={{ mr: 1 }} />
+              <Typography fontWeight="500">625 Open</Typography>
+            </Grid>
+            <Grid item container width="auto">
+              <DropButton title="Author" sx={{ mr: 1 }} />
+              <DropButton title="Label" sx={{ mr: 1 }} />
+              <DropButton title="Projects" />
+            </Grid>
           </Grid>
           <Grid item>
             <InfiniteScroll
@@ -48,7 +62,6 @@ function GithubIssueTemplate({ loadMore, data, loading }) {
                   Loading ...
                 </div>
               }
-              // useWindow={false}
             >
               {data.map((d) => (
                 <div key={d.id}>
